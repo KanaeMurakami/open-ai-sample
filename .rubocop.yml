@@ -19,3 +19,9 @@ Style/Documentation:
   Exclude:
     - !ruby/regexp /application_.*\.rb$/
     - "db/**/*"
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 4

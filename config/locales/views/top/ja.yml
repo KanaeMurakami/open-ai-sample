@@ -1,0 +1,5 @@
+ja:
+  top:
+    index:
+      h1: "%{year}年の運勢占い"
+      button: さっそく占ってみる
