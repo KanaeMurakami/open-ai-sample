@@ -3,5 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Answer do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'relation' do
+    it { is_expected.to belong_to(:result) }
+  end
 end

@@ -3,5 +3,17 @@
 require 'rails_helper'
 
 RSpec.describe Result do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'relation' do
+    it { is_expected.to belong_to(:visitor) }
+  end
+
+  describe 'validateion' do
+    subject { build(:result) }
+
+    it { is_expected.to validate_numericality_of(:year).only_integer }
+    it { is_expected.to validate_uniqueness_of(:year).scoped_to(:visitor_id) }
+    it { is_expected.to validate_presence_of(:personality) }
+    it { is_expected.to validate_presence_of(:first_half_fortune) }
+    it { is_expected.to validate_presence_of(:second_half_fortune) }
+  end
 end
