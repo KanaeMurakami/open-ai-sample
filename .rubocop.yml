@@ -7,7 +7,7 @@ AllCops:
   Exclude:
     - "bin/**/*"
     - "config/**/*"
-    - "db/**/*"
+    - "db/schema.rb"
     - "script/**/*"
     - "vendor/**/*"
     - "Rakefile"
@@ -18,3 +18,4 @@ AllCops:
 Style/Documentation:
   Exclude:
     - !ruby/regexp /application_.*\.rb$/
+    - "db/**/*"
