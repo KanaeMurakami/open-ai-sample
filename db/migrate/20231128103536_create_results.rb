@@ -2,8 +2,8 @@
 
 class CreateResults < ActiveRecord::Migration[7.1]
   def change
-    create_table :results do |t|
-      t.references :visitor, null: false, foreign_key: true, index: true
+    create_table :results, id: :uuid, default: 'gen_random_uuid()' do |t|
+      t.references :visitor, null: false, foreign_key: true, index: true, type: :uuid
       t.integer :year, null: false
       t.text :personality, null: false
       t.text :first_half_fortune, null: false

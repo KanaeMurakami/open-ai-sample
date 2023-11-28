@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema[7.1].define(version: 2023_11_28_103538) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "answer_options", force: :cascade do |t|
@@ -25,7 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_103538) do
   end
 
   create_table "answers", force: :cascade do |t|
-    t.bigint "result_id", null: false
+    t.uuid "result_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["result_id"], name: "index_answers_on_result_id"
@@ -49,8 +50,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_103538) do
     t.index ["display_order"], name: "index_questions_on_display_order", unique: true
   end
 
-  create_table "results", force: :cascade do |t|
-    t.bigint "visitor_id", null: false
+  create_table "results", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "visitor_id", null: false
     t.integer "year", null: false
     t.text "personality", null: false
     t.text "first_half_fortune", null: false
@@ -61,7 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_103538) do
     t.index ["visitor_id"], name: "index_results_on_visitor_id"
   end
 
-  create_table "visitors", force: :cascade do |t|
+  create_table "visitors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.integer "sex", null: false
     t.date "birthday", null: false
