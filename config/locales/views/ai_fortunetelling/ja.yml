@@ -5,3 +5,9 @@ ja:
       h2_questions: "質問"
       h3_question: "Q.%{number}"
       submit: 結果を見る
+    show:
+      h1: あなたの%{year}年の運勢はこちら！
+      first_half_fortune: "%{name}さんの%{year}年上半期の運勢"
+      second_half_fortune: "%{name}さんの%{year}年下半期の運勢"
+      personality: "%{name}さんの性格"
+      button: もう一度占う

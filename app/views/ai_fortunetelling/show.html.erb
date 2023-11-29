@@ -1,2 +1,8 @@
-<h1>AiFortunetelling#show</h1>
-<p>Find me in app/views/ai_fortunetelling/show.html.erb</p>
+<h1><%= t('.h1', year: @result.year) %></h1>
+<h2><%= t('.first_half_fortune', year: @result.year, name: @visitor.name) %></h2>
+<%= simple_format(@result.first_half_fortune) %>
+<h2><%= t('.second_half_fortune', year: @result.year, name: @visitor.name) %></h2>
+<%= simple_format(@result.second_half_fortune) %>
+<h2><%= t('.personality', name: @visitor.name) %></h2>
+<%= simple_format(@result.second_half_fortune) %>
+<%= link_to(t('.button'), new_ai_fortunetelling_path) %>

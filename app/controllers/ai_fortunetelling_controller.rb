@@ -2,10 +2,11 @@
 
 # 運勢
 class AiFortunetellingController < ApplicationController
-  before_action :set_year
+  before_action :set_year, only: %i[new create]
 
   def show
     @result = Result.find(params[:id])
+    @visitor = @result.visitor
   end
 
   def new
