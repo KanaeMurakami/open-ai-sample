@@ -1,0 +1,7 @@
+ja:
+  ai_fortunetelling:
+    new:
+      h1: "%{year}年の運勢を占う"
+      h2_questions: "質問"
+      h3_question: "Q.%{number}"
+      submit: 結果を見る

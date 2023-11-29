@@ -1,0 +1,8 @@
+ja:
+  activemodel:
+    ai_fortunetelling_form: 運勢占いフォーム
+    attributes:
+      ai_fortunetelling_form:
+        name: ニックネーム
+        sex: 性別
+        birthday: 生年月日

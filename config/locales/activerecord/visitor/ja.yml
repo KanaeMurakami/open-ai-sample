@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      visitor: 訪問者
+    attributes:
+      visitor:
+        sex: 性別
+  enum:
+    visitor:
+      sex:
+        male: 男性
+        female: 女性
+        unknown: 未回答

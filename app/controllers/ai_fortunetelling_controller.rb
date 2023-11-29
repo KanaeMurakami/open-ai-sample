@@ -2,7 +2,35 @@
 
 # 運勢
 class AiFortunetellingController < ApplicationController
-  def show; end
-  def new; end
-  def create; end
+  before_action :set_year
+
+  def show
+    @result = Result.find(params[:id])
+  end
+
+  def new
+    @form = AiFortunetellingForm.new
+  end
+
+  def create
+    @form = AiFortunetellingForm.new(ai_fortunetelling_params.merge(year: @year))
+    redirect_to(ai_fortunetelling_path(@form.result_id)) && return if @form.save
+
+    render :new
+  end
+
+  private
+
+  def set_year
+    @year = Time.current.next_year.year
+  end
+
+  def ai_fortunetelling_params
+    params.require(:ai_fortunetelling_form).permit(
+      :name,
+      :sex,
+      :birthday,
+      questions: %i[option_id]
+    )
+  end
 end
