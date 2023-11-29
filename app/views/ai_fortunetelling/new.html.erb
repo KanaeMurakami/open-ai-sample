@@ -13,5 +13,6 @@
       <%= ff.collection_radio_buttons :option_id, question.options.sort_by(&:display_order).map { |option| [option.id, option.text]}, :first, :last %>
     <% end %>
   <% end %>
-  <%= f.button(t('.submit')) %>
+  <%= f.submit(t('.submit'), data: { disable_with: "送信中..." }) %>
 <% end %>
+<small><%= t('.notice') %></small>
