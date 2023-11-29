@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe Visitor do
+  describe 'relation' do
+    it { is_expected.to have_many(:results).dependent(:destroy) }
+  end
+
   describe 'enum' do
     it { is_expected.to define_enum_for(:sex).with_values(male: 0, female: 1, unknown: 2) }
   end

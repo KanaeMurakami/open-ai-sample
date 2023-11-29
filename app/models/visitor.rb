@@ -2,6 +2,8 @@
 
 # 訪問者
 class Visitor < ApplicationRecord
+  has_many :results, dependent: :destroy
+
   enum :sex, { male: 0, female: 1, unknown: 2 }
 
   validates :name, presence: true

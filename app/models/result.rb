@@ -3,6 +3,7 @@
 # 回答結果
 class Result < ApplicationRecord
   belongs_to :visitor
+  has_many :answers, dependent: :destroy
 
   validates :year, numericality: { only_integer: true }, uniqueness: { scope: :visitor_id }
   validates :personality, presence: true

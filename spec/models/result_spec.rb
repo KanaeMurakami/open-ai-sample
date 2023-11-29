@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe Result do
   describe 'relation' do
     it { is_expected.to belong_to(:visitor) }
+    it { is_expected.to have_many(:answers).dependent(:destroy) }
   end
 
   describe 'validateion' do

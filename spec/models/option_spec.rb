@@ -5,6 +5,8 @@ require 'rails_helper'
 RSpec.describe Option do
   describe 'relation' do
     it { is_expected.to belong_to(:question) }
+    it { is_expected.to have_one(:answer_option).dependent(:destroy) }
+    it { is_expected.to have_one(:answer).through(:answer_option) }
   end
 
   describe 'validation' do
