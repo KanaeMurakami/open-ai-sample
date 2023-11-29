@@ -11,6 +11,14 @@ RSpec.describe 'AiFortunetellings' do
   end
 
   describe 'GET #create' do
+    before do
+      client = instance_double(OpenAI::Client)
+      allow(OpenAI::Client).to receive(:new).and_return(client)
+      allow(client)
+        .to receive(:chat)
+        .and_return({ 'choices' => { 0 => { 'message' => { 'content' => 'テスト' } } } })
+    end
+
     let!(:question) { create(:question) }
     let!(:option) { create(:option, question:) }
     let(:params) do

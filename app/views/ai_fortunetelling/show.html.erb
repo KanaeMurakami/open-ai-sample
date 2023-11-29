@@ -4,5 +4,5 @@
 <h2><%= t('.second_half_fortune', year: @result.year, name: @visitor.name) %></h2>
 <%= simple_format(@result.second_half_fortune) %>
 <h2><%= t('.personality', name: @visitor.name) %></h2>
-<%= simple_format(@result.second_half_fortune) %>
+<%= simple_format(@result.personality) %>
 <%= link_to(t('.button'), new_ai_fortunetelling_path) %>
