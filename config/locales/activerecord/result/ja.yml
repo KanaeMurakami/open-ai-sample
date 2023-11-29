@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      result: 占い結果
+    attributes:
+      result:
+        year: 年
+        personality: あなたの性格
+        first_half_fortune: 上半期の運勢
+        second_half_fortune: 下半期の運勢

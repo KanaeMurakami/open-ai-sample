@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe Question do
+  describe 'relation' do
+    it { is_expected.to have_many(:options).dependent(:destroy) }
+  end
+
   describe 'validation' do
     subject { build(:question) }
 
