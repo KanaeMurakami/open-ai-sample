@@ -76,7 +76,5 @@ Rails.application.configure do
 
   config.factory_bot.definition_file_paths = ["spec/support/factories"]
 
-  config.hosts = [
-    /.*\.ngrok-free\.app/
-  ]
+  config.hosts << /.*\.ngrok-free\.app/
 end
