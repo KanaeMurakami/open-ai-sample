@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 環境構築
 
-Things you may want to cover:
+```
+bundle install
+```
 
-* Ruby version
+```
+bin/rails db:migrate:reset RAILS_ENV=development
+bin/rails db:seed
+```
 
-* System dependencies
+```
+npm install
+```
 
-* Configuration
+## 起動方法メモ
 
-* Database creation
+```
+bin/rails s
+```
 
-* Database initialization
+```
+bin/rails dartsass:watch
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+ngrok http 3000
+```

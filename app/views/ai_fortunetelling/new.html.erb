@@ -1,18 +1,54 @@
-<h1><%= t('.h1', year: @year) %></h1>
-<%= form_with(model: @form, url: ai_fortunetelling_index_path) do |f| %>
-  <%= f.label(:name) %>
-  <%= f.text_field(:name, requeird: true) %>
-  <%= f.label(:sex) %>
-  <%= f.collection_radio_buttons :sex, Visitor.sexes.keys.map { |sex| [sex, t("enum.visitor.sex.#{sex}")]}, :first, :last %>
-  <%= f.label(:birthday) %>
-  <%= f.date_field(:birthday, requeird: true) %>
-  <h2><%= t('.h2_questions') %></h2>
-  <% Question.order(:display_order).preload(:options).each_with_index do |question, i| %>
-    <h3><%= t('.h3_question', number: i + 1) %></h3>
-    <%= f.fields_for :questions, index: question.id do |ff| %>
-      <%= ff.collection_radio_buttons :option_id, question.options.sort_by(&:display_order).map { |option| [option.id, option.text]}, :first, :last %>
+<div class='bordered white-168 tui-bg-blue-black center tui-screen-800'>
+  <h1 class='tui-panel cyan-168 full-width black-255-text tui-no-shadow center'><%= t('.h1', year: @year) %></h1>
+  <div class='tui-window left-align container'>
+    <%= form_with(model: @form, url: ai_fortunetelling_index_path) do |f| %>
+      <fieldset class='tui-fieldset'>
+        <legend class='white-255-text center'><%= t('.h2_visitor') %></legend>
+        <div>
+          <%= f.label(:name) %>:
+          <%= f.text_field(:name, requeird: true, class: 'tui-input') %>
+        </div>
+        <div>
+          <%= f.label(:birthday) %>:
+          <%= f.date_field(:birthday, requeird: true, class: 'tui-input') %>
+        </div>
+        <div>
+          <%= f.label(:sex) %>:
+          <div class='cyan-168'>
+            <%= f.collection_radio_buttons :sex, Visitor.sexes.keys.map { |sex| [sex, t("enum.visitor.sex.#{sex}")]}, :first, :last do |b| %>
+              <%= b.label(class: 'tui-radio black-255-text') do %>
+                <%= b.text %>
+                <%= b.radio_button %>
+                <span/>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class='tui-fieldset'>
+        <legend class='white-255-text center'><%= t('.h2_questions') %></legend>
+        <% Question.order(:display_order).preload(:options).each_with_index do |question, i| %>
+          <span><%= t('.h3_question', number: i + 1) %></span>
+          <%= f.fields_for :questions, index: question.id do |ff| %>
+            <div class='cyan-168'>
+              <%= ff.collection_radio_buttons :option_id, question.options.sort_by(&:display_order).map { |option| [option.id, option.text]}, :first, :last do |b| %>
+                <%= b.label(class: 'tui-radio black-255-text') do %>
+                  <%= b.text %>
+                  <%= b.radio_button %>
+                  <span/>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+          <br/>
+        <% end %>
+      </fieldset>
+      <br/>
+      <div>
+        <%= f.submit(t('.submit'), class: 'tui-button', data: { disable_with: "送信中..." }) %>
+      </div>
+      <br/>
+      <small><%= t('.notice') %></small>
     <% end %>
-  <% end %>
-  <%= f.submit(t('.submit'), data: { disable_with: "送信中..." }) %>
-<% end %>
-<small><%= t('.notice') %></small>
+  </div>
+</div>
