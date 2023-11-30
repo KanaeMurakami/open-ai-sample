@@ -69,3 +69,5 @@ gem "ruby-openai"
 group :test do
   gem 'shoulda-matchers', '~> 5.0'
 end
+
+gem "dartsass-rails"
