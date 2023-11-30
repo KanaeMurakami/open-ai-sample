@@ -1,2 +1,8 @@
-<h1><%= t('.h1', year: @year) %></h1>
-<%= link_to(t('.button'), new_ai_fortunetelling_path) %>
+<div class='bordered white-168 tui-bg-blue-black center tui-screen-800-600'>
+  <h1 class='tui-panel cyan-168 full-width black-255-text tui-no-shadow center'><%= t('.h1', year: @year) %></h1>
+  <div class='tui-window container'>
+    <%= simple_format(t('.introduction', year: @year)) %>
+    <%= link_to(t('.button'), new_ai_fortunetelling_path, class: 'tui-button') %>
+    <br/>
+  </div>
+</div>

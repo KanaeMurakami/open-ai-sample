@@ -1,8 +1,18 @@
-<h1><%= t('.h1', year: @result.year) %></h1>
-<h2><%= t('.first_half_fortune', year: @result.year, name: @visitor.name) %></h2>
-<%= simple_format(@result.first_half_fortune) %>
-<h2><%= t('.second_half_fortune', year: @result.year, name: @visitor.name) %></h2>
-<%= simple_format(@result.second_half_fortune) %>
-<h2><%= t('.personality', name: @visitor.name) %></h2>
-<%= simple_format(@result.personality) %>
-<%= link_to(t('.button'), new_ai_fortunetelling_path) %>
+<div class='bordered white-168 tui-bg-blue-black center tui-screen-800'>
+  <h1 class='tui-panel cyan-168 full-width black-255-text tui-no-shadow center'><%= t('.h1', year: @result.year) %></h1>
+  <div class='tui-window left-align container'>
+    <fieldset class='tui-fieldset'>
+      <legend class='white-255-text center'><%= t('.first_half_fortune', year: @result.year, name: @visitor.name) %></legend>
+      <%= simple_format(@result.first_half_fortune) %>
+    </fieldset>
+    <fieldset class='tui-fieldset'>
+      <legend class='white-255-text center'><%= t('.second_half_fortune', year: @result.year, name: @visitor.name) %></legend>
+      <%= simple_format(@result.second_half_fortune) %>
+    </fieldset>
+    <fieldset class='tui-fieldset'>
+      <legend class='white-255-text center'><%= t('.personality', name: @visitor.name) %></legend>
+      <%= simple_format(@result.personality) %>
+    </fieldset>
+    <%= link_to(t('.button'), new_ai_fortunetelling_path, class: 'tui-button') %>
+  </div>
+</div>
